@@ -1,75 +1,110 @@
-package edunova;
+package zimskizadaci;
 
 import javax.swing.JOptionPane;
 
+		//program koji ispisuje cikličnu matricu iz donje desnog kuta i ide u smjeru kazaljke na satu
+
 public class CiklicnaMatrica {
-
-	public static void main(String[] args) {
-		// Kreirati program koji ispisuje cikličnu matricu - ulaz su dva cijela broja
+	
+	
+	
+	//konstruktor  
+	
+public CiklicnaMatrica () {
+	
 		
-		int a = Integer.parseInt(JOptionPane.showInputDialog("Unesite prvi broj"));
-		int b = Integer.parseInt(JOptionPane.showInputDialog("Unesite drugi broj"));
-
+		int a = Integer.parseInt(JOptionPane.showInputDialog("Unesite dimenziju matrice broj kolona"));
+		int b = Integer.parseInt(JOptionPane.showInputDialog("Unesite dimenziju matrice broj stupaca"));
 		
-		int[][] matrica = new int [a][b];
 		
-		int broj = 1;
-	    
-	    int minj = 0;
-	     
-	    int maxj = b-1;
-	     
-	    int mini = 0;
-	     
-	    int maxi = a-1;
-	     
-	    while (broj <= a*b)
+		int[][] matrica = new int[a][b];
+		
+		int dimenzija = a*b;  
+        
+        int vrijednost = 1;	
+         
+        int minKol = 0;		// kraj kolone
+         
+        int maxKol = a-1;	// početak kolone
+         
+        int minStu = 0;		// kraj stupca
+         
+        int maxStu = b-1;	// početak 
+         
+        while (vrijednost <= dimenzija)
+        {
+        	for (int i = maxStu; i >= minStu; i--)
+            {
+                matrica[maxKol][i] = vrijednost;
+                     
+                vrijednost++;
+                
+            }
+        	
+        	if (vrijednost > dimenzija) {break;}
+        	
+        	maxKol --;
+             
+            for (int i = maxKol; i >= minKol; i--) 
+            { 
+                matrica[i][minStu] = vrijednost; 
+                 
+                vrijednost++; 
+                   
+            } 
+            
+            if (vrijednost > dimenzija) {break;}
+            
+            minStu ++;
+            
+             
+            for (int i = minStu; i <= maxStu; i++)
+            {
+                matrica[minKol][i] = vrijednost;
+                             
+                vrijednost++;
+            }
+            
+            if (vrijednost > dimenzija) {break;}
+            
+            minKol ++;
+             
+            for (int i = minKol; i <= maxKol; i++) 
+            {
+                matrica[i][maxStu] = vrijednost;
+                 
+                vrijednost++;
+            } 
+            
+            if (vrijednost > dimenzija) {break;}
+            
+            maxStu --;
+            
+        }
+         
+         
+        for (int i = 0; i < a; i++)
 	    {
-	        for (int i = maxi; i >= mini; i--)
-	        {
-	            matrica[maxi][i] = broj;
-	                 
-	            broj++;
-	        }
-	         
-	        for (int i = maxi-1; i >= mini; i--) 
-	        { 
-	            matrica[i][minj] = broj; 
-	             
-	            broj++; 
-	        } 
-	         
-	        for (int i = minj+1; i <= maxj; i++)
-	        {
-	            matrica[mini][i] = broj;
-	                         
-	            broj++;
-	        }
-	         
-	        for (int i = mini+1; i <= maxi-1; i++) 
-	        {
-	            matrica[i][maxj] = broj;
-	             
-	            broj++;
-	        }
-	         
-	        minj++;
-	    
-	        mini++;
-	         
-	        maxj--;
-	         
-	        maxi--;
-	    }
-	     
-	    for (int i = 0; i < matrica.length; i++)
-	    {
-	        for (int j = 0; j < matrica.length; j++)
+	        for (int j = 0; j < b; j++)
 	        {
 	            System.out.print(matrica[i][j]+ "\t");
 	        }
 	         
 	        System.out.println();
 	    }
+    }
+    
+public static void main(String[] args) {
+	
+	new CiklicnaMatrica();
+	
+	
+		
+	
 	}
+	
+	
+	
+	
+	
 }

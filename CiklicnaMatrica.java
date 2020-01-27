@@ -41,7 +41,7 @@ public CiklicnaMatrica () {
                 
             }
         	
-        	if (vrijednost > dimenzija) {break;}
+        	if (vrijednost > dimenzija) {break;}  // uvjet za izlazak iz petlje ako je matrica ne simetrična
         	
         	maxKol --;
              
@@ -83,7 +83,7 @@ public CiklicnaMatrica () {
         }
          
          
-        for (int i = 0; i < a; i++)
+        for (int i = 0; i < a; i++)		// ispis matrice
 	    {
 	        for (int j = 0; j < b; j++)
 	        {
@@ -96,7 +96,7 @@ public CiklicnaMatrica () {
     
 public static void main(String[] args) {
 	
-	new CiklicnaMatrica();
+	new CiklicnaMatrica();		// pozivanje konstruktora
 	
 	
 		
